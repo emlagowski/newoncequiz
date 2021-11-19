@@ -10,11 +10,13 @@ interface Category {
   maxTriesCount: number;
 }
 
+interface Categories {
+  categories: Category[]
+}
+
 export const CategoryPage = () => {
-  const {
-    loading,
-    data = [],
-  } = useFetch<Category[]>("https://api.newoncequiz.pl/api/categories", []);
+  const { loading, data = null } = useFetch<Categories>(
+    "https://api.newoncequiz.pl/api/quiz-categories?userId=m", []);
 
   if (loading) {
     return <Loading/>
@@ -23,7 +25,7 @@ export const CategoryPage = () => {
   return (
     <div>
       <h1>Wybierz kategorię</h1>
-      {data.map((category) => (
+      {data?.categories.map((category) => (
         <div className="category-item">
           <button style={{ marginBottom: "7px" }}>{category.typeName}</button>
           <div className="hstack">
