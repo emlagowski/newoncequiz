@@ -5,6 +5,7 @@ import { Loading } from "./components/Loading";
 import { useLocation, useNavigate, useParams } from "react-router";
 
 interface Category {
+  id: string;
   type: string;
   typeName: string;
   playedUsersCount: number;
@@ -31,7 +32,7 @@ export const CategoryPage = () => {
 
   const onOpenCategory = (category: Category) => {
     console.log(category);
-    navigate(`/game?categorySlug=${category.type}`);
+    navigate(`/game?categoryId=${category.id}&userSlug=${userSlug}`);
   };
 
   return (
