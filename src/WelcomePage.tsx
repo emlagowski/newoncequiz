@@ -1,6 +1,6 @@
 export const WelcomePage = () => {
   return (
-    <div className="App">
+    <div>
       <h1 className={"primary"}>Zagraj z innymi w newonce.play</h1>
       <p className={"primary grow"}>
         Tu jest taki piękny opis co ta gra robi, dla kogo jest i co można w

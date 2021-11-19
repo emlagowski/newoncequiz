@@ -38,7 +38,6 @@ p {
 
 
 button {
-  margin-bottom: 24px;
   background-color: white;
   color: black;
   width: 100%;
@@ -55,4 +54,10 @@ button {
 button.primary {
   color: white;
   background-color: rgb(19, 0, 232);
+}
+
+.hstack {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
