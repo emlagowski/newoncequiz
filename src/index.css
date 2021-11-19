@@ -71,4 +71,5 @@ input {
   border: solid 2px black;
   font-family: HelveticaNowTextBold;
   box-shadow: 2px 2px 0px 0px rgb(0, 0, 0);
+  width: 100%
 }
