@@ -2,8 +2,10 @@ import { useState } from "react";
 import "./categories.css";
 import useFetch from "use-http";
 import { Loading } from "./components/Loading";
+import { useLocation, useNavigate, useParams } from "react-router";
 
 interface Category {
+  type: string;
   typeName: string;
   playedUsersCount: number;
   leftTriesCount: number;
@@ -15,19 +17,34 @@ interface Categories {
 }
 
 export const CategoryPage = () => {
+  const search = useLocation().search;
+  const userSlug = new URLSearchParams(search).get("categorySlug");
+  const navigate = useNavigate();
   const { loading, data = null } = useFetch<Categories>(
-    "https://api.newoncequiz.pl/api/quiz-categories?userId=m", []);
+    `https://api.newoncequiz.pl/api/quiz-categories?userId=${userSlug}`,
+    []
+  );
 
   if (loading) {
-    return <Loading/>
+    return <Loading />;
   }
+
+  const onOpenCategory = (category: Category) => {
+    console.log(category);
+    navigate(`/game?categorySlug=${category.type}`);
+  };
 
   return (
     <div>
       <h1>Wybierz kategorię</h1>
       {data?.categories.map((category) => (
-        <div className="category-item">
-          <button style={{ marginBottom: "7px" }}>{category.typeName}</button>
+        <div key={category.type} className="category-item">
+          <button
+            style={{ marginBottom: "7px" }}
+            onClick={() => onOpenCategory(category)}
+          >
+            {category.typeName}
+          </button>
           <div className="hstack">
             <div className="primary">
               zostało {category.leftTriesCount}/{category.maxTriesCount}
@@ -38,4 +55,4 @@ export const CategoryPage = () => {
       ))}
     </div>
   );
-}
+};
