@@ -1,22 +1,29 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
+import { useNavigate } from "react-router";
+
 
 export const WelcomePage = () => {
 
-  // const [username, setUsername] = useState("")
   const username = useRef(null);
+  const nav = useNavigate()
 
-  const login = () => {
+  const login = async () => {
     const name = username.current!
     const uname = name['value']
     console.log(uname)
 
-    fetch("https://api.newoncequiz.pl/api/users",{
+    const data = await fetch("https://api.newoncequiz.pl/api/users",{
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({name: uname})
     })
+
+    const user = await data.json()
+
+    nav(`/categories?userSlug=${user.slug}`)
+    
   }
 
 

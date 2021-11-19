@@ -56,6 +56,11 @@ button.primary {
   background-color: rgb(19, 0, 232);
 }
 
+button:active {
+  color: white;
+  background-color: rgb(19, 0, 232);
+}
+
 .hstack {
   display: flex;
   flex-direction: row;
