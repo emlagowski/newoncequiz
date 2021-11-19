@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./categories.css";
 import useFetch from "use-http";
+import { Loading } from "./components/Loading";
 
 interface Category {
   typeName: string;
@@ -10,33 +11,21 @@ interface Category {
 }
 
 export const CategoryPage = () => {
-  // const [] = useFetch("http")
-  const [categories, setCategories] = useState<Category[]>([
-      {
-        typeName: "Muzyka",
-        playedUsersCount: 100,
-        leftTriesCount: 1,
-        maxTriesCount: 2,
-      },
-      {
-        typeName: "Film",
-        playedUsersCount: 100,
-        leftTriesCount: 1,
-        maxTriesCount: 2,
-      },
-      {
-        typeName: "Sport",
-        playedUsersCount: 100,
-        leftTriesCount: 1,
-        maxTriesCount: 2,
-      },
-    ]);
+  const {
+    loading,
+    data = [],
+  } = useFetch<Category[]>("https://api.newoncequiz.pl/api/categories", []);
+
+  if (loading) {
+    return <Loading/>
+  }
+
   return (
     <div>
       <h1>Wybierz kategorię</h1>
-      {categories.map((category) => (
+      {data.map((category) => (
         <div className="category-item">
-          <button style={{marginBottom: "7px"}}>{category.typeName}</button>
+          <button style={{ marginBottom: "7px" }}>{category.typeName}</button>
           <div className="hstack">
             <div className="primary">
               zostało {category.leftTriesCount}/{category.maxTriesCount}
