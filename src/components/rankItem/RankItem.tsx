@@ -15,7 +15,7 @@ export const RankItem = (props: {
             {props.price &&
                 <div className={`price ${act}`}>szansa na nagrodę</div>
             }
-            {props.price &&
+            {/* {props.price &&
                 <div
                     style={{
                         position: "absolute",
@@ -39,7 +39,7 @@ export const RankItem = (props: {
                         }}
                     />
                 </div>
-            }
+            } */}
             <div className="flexrow"><p>{props.name}</p><p>{props.points}</p></div>
         </div>
     )

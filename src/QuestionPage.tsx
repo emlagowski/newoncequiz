@@ -21,7 +21,7 @@ export const QuestionPage = (params: QuestionPageParams) => {
       setTimer(timeoutVal);
       if (timeoutVal < 0) {
         clearTimeout(timeout);
-        onFailure();
+        // onFailure();
       }
     }, 10);
 
@@ -91,6 +91,7 @@ export const QuestionPage = (params: QuestionPageParams) => {
         </button>
       )}
 
+      <div style={{paddingBottom: "48px"}}>
       {question.possibleAnswers.map((possibleAnswer) => {
         return (
           <button key={possibleAnswer} onClick={() => onAnswerSelected(possibleAnswer)}>
@@ -98,6 +99,7 @@ export const QuestionPage = (params: QuestionPageParams) => {
           </button>
         );
       })}
+      </div>
     </div>
   );
 };

@@ -73,7 +73,7 @@ export const QuizSummaryPage = () => {
           );
         })}
       </div>
-      <div style={{ marginBottom: "24px"}}>
+      <div style={{ paddingBottom: "48px"}}>
         <button className="primary" style={{ marginTop: "64px" }} onClick={onShare}>
           UDOSTĘPNIJ!
         </button>
