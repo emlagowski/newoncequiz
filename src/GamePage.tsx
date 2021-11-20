@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { useLocation, useParams } from "react-router";
 import useFetch from "use-http";
+import { Loading } from "./components/Loading";
+import { QuestionPage } from "./QuestionPage";
 
 interface GameResponse {
   game: Game;
@@ -10,7 +13,7 @@ interface Game {
   questions: Question[]
 }
 
-interface Question {
+export interface Question {
   number: number;
   article: string;
   coverUri: string;
@@ -36,9 +39,16 @@ export const GamePage = () => {
     },
     []
   );
+
+  const [questionId, setQuestionId] = useState(0);
+
+  if (loading) {
+    return <Loading />
+  }
+
   return (
     <div>
-      <h1>Gra {data?.game.id}</h1>
+      <QuestionPage question={data?.game.questions[questionId]!}/>
     </div>
   );
 }
