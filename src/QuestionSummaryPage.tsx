@@ -12,11 +12,15 @@ export const QuestionSummaryPage = (params: QuestionSummaryPageParams) => {
 
   return (
     <div>
-      <QuestionImageCover url={question.resultImageUri}/>
-      {success ? <p>Taak! Mówimy o ...</p> : <p></p>}
+      <QuestionImageCover url={question.resultImageUri} />
+      {success ? <p>Taak! Mówimy o ...</p> : <p>Nope! mówimy o ...</p>}
       <button>{question.answer}</button>
-      <p>Dopisujemy do Twojego konta ....</p>
-      <button onClick={onNextQuestion}>KOLEJNE PYTANIE!</button>
+      {success ? (
+        <p>Dopisujemy do Twojego konta ....</p>
+      ) : (
+        <p>Może kolejnym razem Ci się uda! Powodzenia!</p>
+      )}
+      <button className="primary" onClick={onNextQuestion}>KOLEJNE PYTANIE!</button>
     </div>
   );
 };

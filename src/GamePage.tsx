@@ -45,7 +45,7 @@ export const GamePage = () => {
   const [gameResult, setGameResult] = useState(0);
   const [questionId, setQuestionId] = useState(0);
 
-  const [showQuestionSummary, setShowQuestionSummary] = useState<boolean | null>(false)
+  const [showQuestionSummary, setShowQuestionSummary] = useState<boolean | null>(null)
 
   const onNextQuestion = useCallback(() => {
     setQuestionId(questionId + 1);
@@ -58,13 +58,12 @@ export const GamePage = () => {
       setGameResult(gameResult + points);
       setShowQuestionSummary(true);
     },
-    [gameResult, questionId]
+    [gameResult]
   );
 
   const onFailure = useCallback(() => {
     console.log("failure");
     setShowQuestionSummary(false)
-    setQuestionId(questionId + 1);
   }, []);
 
   if (loading) {
@@ -73,7 +72,7 @@ export const GamePage = () => {
 
   return (
     <div>
-      {!showQuestionSummary ?
+      {showQuestionSummary === null ?
         <QuestionPage
           question={data?.game.questions[questionId]!}
           onSuccess={onSuccess}
