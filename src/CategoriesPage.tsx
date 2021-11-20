@@ -18,7 +18,7 @@ interface Categories {
 
 export const CategoryPage = () => {
   const search = useLocation().search;
-  const userSlug = new URLSearchParams(search).get("categorySlug");
+  const userSlug = new URLSearchParams(search).get("userSlug");
   const navigate = useNavigate();
   const { loading, data = null } = useFetch<Categories>(
     `https://api.newoncequiz.pl/api/quiz-categories?userId=${userSlug}`,
