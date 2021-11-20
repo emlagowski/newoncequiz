@@ -1,7 +1,8 @@
 import { useCallback, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router";
-import useFetch from "use-http";
+import useFetch, { CachePolicies } from "use-http";
 import { Loading } from "./components/Loading";
+import { API_ADDRESS } from "./constants";
 import { QuestionPage } from "./QuestionPage";
 import { QuestionSummaryPage } from "./QuestionSummaryPage";
 
@@ -31,21 +32,25 @@ export const GamePage = () => {
   const categoryId = searchParams.get("categoryId");
   const userId = searchParams.get("userId");
   const { loading, data = null } = useFetch<GameResponse>(
-    `https://api.newoncequiz.pl/api/games`,
+    `${API_ADDRESS}/api/games`,
     {
       method: "POST",
+      cache: "no-cache",
+      cachePolicy: CachePolicies.NETWORK_ONLY,
       body: {
         userId: userId,
         categoryId: categoryId,
-      },
+      }
     },
     []
   );
 
   const { post: postGameResults, response } = useFetch(
-    `https://api.newoncequiz.pl/api/games/results`,
+    `${API_ADDRESS}/api/games/results`,
     {
       method: "POST",
+      cache: "no-cache",
+      cachePolicy: CachePolicies.NETWORK_ONLY,
     }
   );
 
@@ -67,7 +72,7 @@ export const GamePage = () => {
       console.log("no more questions. go to results " + questionId);
       postGameResults({
         gameId: data?.game.id,
-        score: gameResult,
+        score: gameResult.toString(),
       }).then((response) => {
         navigate(`/game/result?gameId=${data?.game.id}&userId=${userId}`);
       });

@@ -1,7 +1,8 @@
 import "./categories.css";
-import useFetch from "use-http";
 import { Loading } from "./components/Loading";
-import { useLocation, useNavigate, useParams } from "react-router";
+import { useLocation, useNavigate } from "react-router";
+import { API_ADDRESS } from "./constants";
+import useFetch, { CachePolicies } from "use-http";
 
 interface Category {
   id: string;
@@ -21,8 +22,7 @@ export const CategoryPage = () => {
   const userId = new URLSearchParams(search).get("userId");
   const navigate = useNavigate();
   const { loading, data = null } = useFetch<Categories>(
-    `https://api.newoncequiz.pl/api/quiz-categories?userId=${userId}`,
-    []
+    `${API_ADDRESS}/api/quiz-categories?userId=${userId}`,{cache: "no-cache", cachePolicy: CachePolicies.NETWORK_ONLY}, []
   );
 
   if (loading) {
