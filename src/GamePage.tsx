@@ -102,6 +102,7 @@ export const GamePage = () => {
       {showQuestionSummary === null ? (
         <QuestionPage
           question={data?.game.questions[questionId]!}
+          questionsCount={data?.game.questions.length!}
           onSuccess={onSuccess}
           onFailure={onFailure}
         />
