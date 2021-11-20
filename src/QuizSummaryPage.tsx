@@ -29,11 +29,11 @@ export const QuizSummaryPage = () => {
   );
   const link = window.location.href + `?gameId=${gameId}&userId=${userId}`;
   const navigate = useNavigate();
-  
+
   const onGoToCategories = useCallback(() => {
     navigate(`/categories?userId=${userId}`);
   }, [navigate, userId])
-  
+
   const onShare = useCallback(() => {
     if (navigator.share) {
       navigator
@@ -56,26 +56,31 @@ export const QuizSummaryPage = () => {
   }
 
   return (
-    <div>
+    <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
       <h2 className="primary">W rankingu dziennym zajmujesz:</h2>
-      {data?.rankings.map((ranking, index) => {
-        return (
-          <div key={ranking.slug} style={{ width: `${100 - index * 10}%` }}>
-            <RankItem
-              active={ranking.thisUser}
-              name={ranking.slug}
-              place={ranking.place}
-              points={ranking.score}
-            />
-          </div>
-        );
-      })}
-      <button className="primary" style={{ marginTop: "64px" }} onClick={onShare}>
-        UDOSTĘPNIJ!
-      </button>
-      <button style={{ marginTop: "24px" }} onClick={onGoToCategories}>
-        ZAGRAJ JESZCZE RAZ
-      </button>
+      <div style={{ flex: 1, margin: "24px 0" }}>
+        {data?.rankings.map((ranking, index) => {
+          return (
+            <div key={ranking.slug} style={{ width: `${100 - index * 10}%` }}>
+              <RankItem
+                active={ranking.thisUser}
+                name={ranking.slug}
+                place={ranking.place}
+                points={ranking.score}
+                price={index === 0}
+              />
+            </div>
+          );
+        })}
+      </div>
+      <div style={{ marginBottom: "24px"}}>
+        <button className="primary" style={{ marginTop: "64px" }} onClick={onShare}>
+          UDOSTĘPNIJ!
+        </button>
+        <button style={{ marginTop: "24px" }} onClick={onGoToCategories}>
+          ZAGRAJ JESZCZE RAZ
+        </button>
+      </div>
     </div>
   );
 };

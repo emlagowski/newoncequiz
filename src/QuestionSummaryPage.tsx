@@ -25,6 +25,7 @@ export const QuestionSummaryPage = (params: QuestionSummaryPageParams) => {
             padding: "12px",
             borderRadius: "100%",
             boxShadow: `4px 4px 0px ${success ? "#1300E8" : "#666"}`,
+            border: `1px solid ${success ? "#1300E8" : "#666"}`
           }}
         >
           <div
