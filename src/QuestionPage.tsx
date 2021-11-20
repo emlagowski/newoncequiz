@@ -42,14 +42,14 @@ export const QuestionPage = (params: QuestionPageParams) => {
           2: (
             <div>
               <QuestionImageCover url={question.coverUri}/>
-              <p>pytanie za {questionVariant} punkty</p>
+              <div className="row primary"><p>pytanie za {questionVariant} punkty</p></div>
               <h2>Kogo to album?</h2>
             </div>
           ),
           1: (
             <div>
               <QuestionTextCover text={question.randomSong} />
-              <p>pytanie za {questionVariant} punkty</p>
+              <div className="row primary"><p>pytanie za {questionVariant} punkty</p></div>
               <h2>To piosenka...?</h2>
             </div>
           ),

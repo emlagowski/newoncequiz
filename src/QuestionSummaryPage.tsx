@@ -1,4 +1,3 @@
-import { relative } from "path/posix";
 import { QuestionImageCover } from "./components/questionImageCover/QuestionImageCover";
 import { Question } from "./GamePage";
 
