@@ -80,8 +80,7 @@ export const QuestionPage = (params: QuestionPageParams) => {
           </button>
         );
       })}
-      <div className="row"><p>{timer.toFixed(2)}</p></div>
-      {/* <Timer val={timer}/> */}
+      <div className="row"><p>{timer.toFixed(2).replace('.',':')}</p></div>
       {questionVariant > 1 && (
         <button className="primary" onClick={onEasier}>
           YYY... PODPOWIEDŹ!
