@@ -37,6 +37,8 @@ export const WelcomePage = () => {
       <h2 className="label">Podaj imię</h2>
       <input id="name" placeholder="Twoje imię" ref={username}/>
       <button onClick={login} className="primary">lecimy</button>
+
+      <button onClick={() => nav('/rank')} className="primary">wyniki (do skasowania)</button>
     </div>
   );
 }
