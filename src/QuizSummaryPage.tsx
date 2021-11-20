@@ -58,7 +58,7 @@ export const QuizSummaryPage = () => {
           <div key={ranking.slug} style={{ width: `${100 - index * 10}%` }}>
             <RankItem
               active={ranking.name === userId}
-              name={ranking.name}
+              name={ranking.slug}
               place={ranking.place}
               points={ranking.score}
             />
