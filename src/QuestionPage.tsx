@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { QuestionCover } from "./components/questionCover/QuestionCover";
+import { QuestionTextCover } from "./components/questionTextCover/QuestionTextCover";
 import { Question } from "./GamePage";
 
 interface QuestionPageParams {
@@ -30,9 +30,9 @@ export const QuestionPage = (params: QuestionPageParams) => {
 
       {
         {
-          3: <QuestionCover text={question.article}/>,
+          3: <QuestionTextCover text={question.article}/>,
           2: <p>{question.coverUri}</p>,
-          1: <QuestionCover text={question.randomSong}/>,
+          1: <QuestionTextCover text={question.randomSong}/>,
         }[questionVariant]
       }
 

@@ -1,6 +1,6 @@
-import "./QuestionCover.css"
+import "./QuestionTextCover.css"
 
-export const QuestionCover = (props: {
+export const QuestionTextCover = (props: {
     text: string
 }) => {
     return (
