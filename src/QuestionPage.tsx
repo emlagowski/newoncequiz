@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { QuestionImageCover } from "./components/questionImageCover/QuestionImageCover";
 import { QuestionTextCover } from "./components/questionTextCover/QuestionTextCover";
-import { Timer } from "./components/timer/Timer";
 import { Question } from "./GamePage";
 
 interface QuestionPageParams {

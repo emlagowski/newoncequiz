@@ -34,7 +34,7 @@ export const QuestionSummaryPage = (params: QuestionSummaryPageParams) => {
           }}/>
       </div>
       </div>
-      {success ? <h2>Taak! Mówimy o ...</h2> : <h2>Nope! mówimy o ...</h2>}
+      <h2>{success ? 'Taak! Mówimy o ...' : 'Nope! mówimy o ...'}</h2>
       <button>{question.answer}</button>
       {success ? (
         <p className="primary" style={{flex: 1, marginBottom: "24px"}}>Dopisujemy do Twojego konta ....</p>
