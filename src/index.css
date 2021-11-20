@@ -3,6 +3,16 @@
   src: local('HelveticaNowTextBold'), url(./fonts/HelveticaNowTextBold.woff) format('woff');
 }
 
+@font-face {
+  font-family: 'HelveticaNowText';
+  src: local('HelveticaNowText'), url(./fonts/HelveticaNowText.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'HelveticaNowDisplayBlk';
+  src: local('HelveticaNowDisplayBlk'), url(./fonts/HelveticaNowDisplayBlk.woff) format('woff');
+}
+
 html, body, #root, .App {
   height: 100vh;
 }
@@ -25,11 +35,12 @@ code {
 
 h1, h2 {
   text-align: left;
-  font-family: HelveticaNowTextBold;
+  font-family: HelveticaNowDisplayBlk;
 }
 
 p {
   text-align: left;
+  font-family: HelveticaNowText;
 }
 
 .primary {
