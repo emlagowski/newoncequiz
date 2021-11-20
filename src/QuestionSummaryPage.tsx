@@ -37,19 +37,19 @@ export const QuestionSummaryPage = (params: QuestionSummaryPageParams) => {
         <div style={{
           position: "absolute",
           backgroundColor: "white",
-          width: "92px",
-          height: "92px",
+          width: "120px",
+          height: "120px",
           left: -24,
           top: -24,
           borderRadius: "100%",
           boxShadow: '4px 4px 0px #1300E8',
           display: "flex",
           justifyContent: "center",
-          fontSize: "24px",
-          lineHeight: "48px",
-          color: "rgb(19, 0, 232)"
+          fontSize: "44px",
+          color: "rgb(19, 0, 232)",
+          lineHeight: "128px",
         }}>
-          <p>+ {questionPoints}</p>
+          + {questionPoints}
         </div>
         
         
