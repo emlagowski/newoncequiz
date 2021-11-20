@@ -21,7 +21,7 @@ export const QuestionPage = (params: QuestionPageParams) => {
       setTimer(timeoutVal);
       if (timeoutVal < 0) {
         clearTimeout(timeout);
-        // onFailure();
+        onFailure();
       }
     }, 10);
 
