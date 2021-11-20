@@ -1,6 +1,7 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { QuestionImageCover } from "./components/questionImageCover/QuestionImageCover";
 import { QuestionTextCover } from "./components/questionTextCover/QuestionTextCover";
+import { Timer } from "./components/timer/Timer";
 import { Question } from "./GamePage";
 
 interface QuestionPageParams {
@@ -12,6 +13,22 @@ interface QuestionPageParams {
 export const QuestionPage = (params: QuestionPageParams) => {
   const { question, onSuccess, onFailure } = params;
   const [questionVariant, setQuestionVaraint] = useState(3);
+  const [timer, setTimer] = useState(10);
+  useEffect(() => {
+    var timeoutVal = 10
+    const timeout = setInterval(() => {
+      timeoutVal -= 0.01
+      setTimer(timeoutVal)
+      if(timeoutVal<0){
+        clearTimeout(timeout)
+        onFailure()
+      }
+    },10)
+
+    return () => {
+      clearTimeout(timeout)
+    }
+  }, [])
 
   const onEasier = useCallback(() => {
     setQuestionVaraint(questionVariant - 1);
@@ -63,6 +80,8 @@ export const QuestionPage = (params: QuestionPageParams) => {
           </button>
         );
       })}
+      <div className="row"><p>{timer.toFixed(2)}</p></div>
+      {/* <Timer val={timer}/> */}
       {questionVariant > 1 && (
         <button className="primary" onClick={onEasier}>
           YYY... PODPOWIEDŹ!

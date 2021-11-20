@@ -10,7 +10,6 @@ export const WelcomePage = () => {
   const login = async () => {
     const name = username.current!
     const uname = name['value']
-    console.log(uname)
 
     const data = await fetch("https://api.newoncequiz.pl/api/users",{
       method: "POST",
