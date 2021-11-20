@@ -40,15 +40,21 @@ export const GamePage = () => {
     []
   );
 
+
+  const [gameResult, setGameResult] = useState(0);
   const [questionId, setQuestionId] = useState(0);
 
-  const onSuccess = useCallback(() => {
-    console.log("success")
-  }, [])
+  const onSuccess = useCallback(
+    (points: number) => {
+      console.log("success");
+      setGameResult(gameResult + points);
+    },
+    [gameResult]
+  );
 
   const onFailure = useCallback(() => {
-    console.log("failure")
-  }, [])
+    console.log("failure");
+  }, []);
 
   if (loading) {
     return <Loading />

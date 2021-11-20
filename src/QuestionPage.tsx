@@ -5,7 +5,7 @@ import { Question } from "./GamePage";
 
 interface QuestionPageParams {
   question: Question;
-  onSuccess: () => void;
+  onSuccess: (points: number) => void;
   onFailure: () => void;
 }
 
@@ -19,7 +19,7 @@ export const QuestionPage = (params: QuestionPageParams) => {
 
   const onAnswerSelected = useCallback((selectedValue) => {
     if (selectedValue === question.answer) {
-      onSuccess();
+      onSuccess(questionVariant);
     } else {
       onFailure();
     }

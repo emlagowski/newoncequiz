@@ -49,7 +49,7 @@ export const CategoryPage = () => {
             <div className="primary">
               zostało {category.leftTriesCount}/{category.maxTriesCount}
             </div>
-            <div className="primary">gra {category.playedUsersCount} osób</div>
+            <div className="primary">zagrano {category.playedUsersCount} razy</div>
           </div>
         </div>
       ))}
