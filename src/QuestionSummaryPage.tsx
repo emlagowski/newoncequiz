@@ -1,3 +1,4 @@
+import { QuestionImageCover } from "./components/questionImageCover/QuestionImageCover";
 import { Question } from "./GamePage";
 
 interface QuestionSummaryPageParams {
@@ -11,7 +12,7 @@ export const QuestionSummaryPage = (params: QuestionSummaryPageParams) => {
 
   return (
     <div>
-      <p>{question.resultImageUri}</p>
+      <QuestionImageCover url={question.resultImageUri}/>
       {success ? <p>Taak! Mówimy o ...</p> : <p></p>}
       <button>{question.answer}</button>
       <p>Dopisujemy do Twojego konta ....</p>

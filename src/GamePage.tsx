@@ -3,6 +3,7 @@ import { useLocation, useParams } from "react-router";
 import useFetch from "use-http";
 import { Loading } from "./components/Loading";
 import { QuestionPage } from "./QuestionPage";
+import { QuestionSummaryPage } from "./QuestionSummaryPage";
 
 interface GameResponse {
   game: Game;
@@ -44,16 +45,26 @@ export const GamePage = () => {
   const [gameResult, setGameResult] = useState(0);
   const [questionId, setQuestionId] = useState(0);
 
+  const [showQuestionSummary, setShowQuestionSummary] = useState<boolean | null>(false)
+
+  const onNextQuestion = useCallback(() => {
+    setQuestionId(questionId + 1);
+    setShowQuestionSummary(null)
+  }, [])
+
   const onSuccess = useCallback(
     (points: number) => {
       console.log("success");
       setGameResult(gameResult + points);
+      setShowQuestionSummary(true);
     },
-    [gameResult]
+    [gameResult, questionId]
   );
 
   const onFailure = useCallback(() => {
     console.log("failure");
+    setShowQuestionSummary(false)
+    setQuestionId(questionId + 1);
   }, []);
 
   if (loading) {
@@ -62,7 +73,13 @@ export const GamePage = () => {
 
   return (
     <div>
-      <QuestionPage question={data?.game.questions[questionId]!} onSuccess={onSuccess} onFailure={onFailure}/>
+      {!showQuestionSummary ?
+        <QuestionPage
+          question={data?.game.questions[questionId]!}
+          onSuccess={onSuccess}
+          onFailure={onFailure}
+        /> : <QuestionSummaryPage success={showQuestionSummary!} question={data?.game.questions[questionId]!} onNextQuestion={onNextQuestion} />
+      }
     </div>
   );
 }
