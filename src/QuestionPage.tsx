@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import { QuestionCover } from "./components/questionCover/QuestionCover";
 import { Question } from "./GamePage";
 
 interface QuestionPageParams {
@@ -17,7 +18,8 @@ export const QuestionPage = (params: QuestionPageParams) => {
       <p>pytanie {params.question.number}/10</p>
     
       
-      <p>{params.question.article}</p>
+      <QuestionCover text={params.question.article}/>
+
       <p>pytanie za 3 punkty</p>
       <h1>O kim mówi artykuł z newonce?</h1>
 
