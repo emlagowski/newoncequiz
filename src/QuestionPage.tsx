@@ -41,7 +41,7 @@ export const QuestionPage = (params: QuestionPageParams) => {
           ),
           2: (
             <div>
-              <QuestionImageCover url={question.coverUri}/>
+              <QuestionImageCover url={question.coverUri} blurred={true}/>
               <div className="row primary"><p>pytanie za {questionVariant} punkty</p></div>
               <h2>Kogo to album?</h2>
             </div>
