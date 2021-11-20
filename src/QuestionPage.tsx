@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import { QuestionImageCover } from "./components/questionImageCover/QuestionImageCover";
 import { QuestionTextCover } from "./components/questionTextCover/QuestionTextCover";
 import { Question } from "./GamePage";
 
@@ -39,7 +40,7 @@ export const QuestionPage = (params: QuestionPageParams) => {
           ),
           2: (
             <div>
-              <p>{question.coverUri}</p>
+              <QuestionImageCover url={question.coverUri}/>
               <p>pytanie za {questionVariant} punkty</p>
               <h1>Kogo to album?</h1>
             </div>
