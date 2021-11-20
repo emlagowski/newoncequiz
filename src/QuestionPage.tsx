@@ -22,7 +22,7 @@ export const QuestionPage = (params: QuestionPageParams) => {
     } else {
       onFailure();
     }
-  }, [])
+  }, []);
 
   return (
     <div>
@@ -30,14 +30,29 @@ export const QuestionPage = (params: QuestionPageParams) => {
 
       {
         {
-          3: <QuestionTextCover text={question.article}/>,
-          2: <p>{question.coverUri}</p>,
-          1: <QuestionTextCover text={question.randomSong}/>,
+          3: (
+            <div>
+              <QuestionTextCover text={question.article} />
+              <p>pytanie za {questionVariant} punkty</p>
+              <h1>O kim mówi artykuł z newonce?</h1>
+            </div>
+          ),
+          2: (
+            <div>
+              <p>{question.coverUri}</p>
+              <p>pytanie za {questionVariant} punkty</p>
+              <h1>Kogo to album?</h1>
+            </div>
+          ),
+          1: (
+            <div>
+              <QuestionTextCover text={question.randomSong} />
+              <p>pytanie za {questionVariant} punkty</p>
+              <h1>To piosenka...?</h1>
+            </div>
+          ),
         }[questionVariant]
       }
-
-      <p>pytanie za 3 punkty</p>
-      <h1>O kim mówi artykuł z newonce?</h1>
 
       {question.possibleAnswers.map((possibleAnswer) => {
         return (
@@ -46,10 +61,11 @@ export const QuestionPage = (params: QuestionPageParams) => {
           </button>
         );
       })}
-
-      <button className="primary" onClick={onEasier}>
-        YYY... PODPOWIEDŹ!
-      </button>
+      {questionVariant > 1 && (
+        <button className="primary" onClick={onEasier}>
+          YYY... PODPOWIEDŹ!
+        </button>
+      )}
     </div>
   );
 };
