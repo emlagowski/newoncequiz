@@ -4,30 +4,52 @@ import { Question } from "./GamePage";
 
 interface QuestionPageParams {
   question: Question;
+  onSuccess: () => void;
+  onFailure: () => void;
 }
 
 export const QuestionPage = (params: QuestionPageParams) => {
+  const { question, onSuccess, onFailure } = params;
   const [questionVariant, setQuestionVaraint] = useState(3);
 
   const onEasier = useCallback(() => {
     setQuestionVaraint(questionVariant - 1);
+  }, [questionVariant]);
+
+  const onAnswerSelected = useCallback((selectedValue) => {
+    if (selectedValue === question.answer) {
+      onSuccess();
+    } else {
+      onFailure();
+    }
   }, [])
 
   return (
     <div>
-      <p>pytanie {params.question.number}/10</p>
-    
-      
-      <QuestionCover text={params.question.article}/>
+      <p>pytanie {question.number}</p>
+
+      {
+        {
+          3: <QuestionCover text={question.article}/>,
+          2: <p>{question.coverUri}</p>,
+          1: <QuestionCover text={question.randomSong}/>,
+        }[questionVariant]
+      }
 
       <p>pytanie za 3 punkty</p>
       <h1>O kim mówi artykuł z newonce?</h1>
 
-      {params.question.possibleAnswers.map((possibleAnswer) => {
-        return <button>{possibleAnswer}</button>;
+      {question.possibleAnswers.map((possibleAnswer) => {
+        return (
+          <button onClick={() => onAnswerSelected(possibleAnswer)}>
+            {possibleAnswer}
+          </button>
+        );
       })}
 
-      <button className="primary">YYY... PODPOWIEDŹ!</button>
+      <button className="primary" onClick={onEasier}>
+        YYY... PODPOWIEDŹ!
+      </button>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useLocation, useParams } from "react-router";
 import useFetch from "use-http";
 import { Loading } from "./components/Loading";
@@ -42,13 +42,21 @@ export const GamePage = () => {
 
   const [questionId, setQuestionId] = useState(0);
 
+  const onSuccess = useCallback(() => {
+    console.log("success")
+  }, [])
+
+  const onFailure = useCallback(() => {
+    console.log("failure")
+  }, [])
+
   if (loading) {
     return <Loading />
   }
 
   return (
     <div>
-      <QuestionPage question={data?.game.questions[questionId]!}/>
+      <QuestionPage question={data?.game.questions[questionId]!} onSuccess={onSuccess} onFailure={onFailure}/>
     </div>
   );
 }
