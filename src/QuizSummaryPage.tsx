@@ -26,7 +26,7 @@ export const QuizSummaryPage = () => {
   const navigate = useNavigate();
   
   const onGoToCategories = useCallback(() => {
-    navigate("/categories")
+    navigate(`/categories?userId=${userId}`);
   }, [])
   
   const onShare = useCallback(() => {
