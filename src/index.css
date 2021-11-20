@@ -3,14 +3,13 @@
   src: local('HelveticaNowTextBold'), url(./fonts/HelveticaNowTextBold.woff) format('woff');
 }
 
-html, #root, .App {
-  height: 90%;
+html, body, #root, .App {
+  height: 100vh;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'HelveticaNowTextBold', 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: 'HelveticaNowTextBold',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -26,6 +25,7 @@ code {
 
 h1, h2 {
   text-align: left;
+  font-family: HelveticaNowTextBold;
 }
 
 p {
@@ -41,6 +41,7 @@ button {
   background-color: white;
   color: black;
   width: 100%;
+  height: 45px;
   padding: 12px;
   font-size: 16px;
   line-height: 1.1;
@@ -84,5 +85,10 @@ input {
   border: solid 2px black;
   font-family: HelveticaNowTextBold;
   box-shadow: 2px 2px 0px 0px rgb(0, 0, 0);
-  width: 100%
+  width: 93%
+}
+
+
+.answers button {
+  margin-top: 8px;
 }

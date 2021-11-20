@@ -26,7 +26,7 @@ export const QuestionPage = (params: QuestionPageParams) => {
   }, []);
 
   return (
-    <div>
+    <div className="answers">
       <p>pytanie {question.number}</p>
 
       {
@@ -34,7 +34,7 @@ export const QuestionPage = (params: QuestionPageParams) => {
           3: (
             <div>
               <QuestionTextCover text={question.article} />
-              <p>pytanie za {questionVariant} punkty</p>
+              <div className="row primary"><p>pytanie za {questionVariant} punkty</p></div>
               <h1>O kim mówi artykuł z newonce?</h1>
             </div>
           ),
