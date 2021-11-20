@@ -58,7 +58,7 @@ export const QuestionPage = (params: QuestionPageParams) => {
 
       {question.possibleAnswers.map((possibleAnswer) => {
         return (
-          <button onClick={() => onAnswerSelected(possibleAnswer)}>
+          <button key={possibleAnswer} onClick={() => onAnswerSelected(possibleAnswer)}>
             {possibleAnswer}
           </button>
         );

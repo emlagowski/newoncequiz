@@ -6,10 +6,11 @@ interface QuestionSummaryPageParams {
   success: boolean;
   question: Question;
   onNextQuestion: () => void;
+  questionPoints: number;
 }
 
 export const QuestionSummaryPage = (params: QuestionSummaryPageParams) => {
-  const { success, question, onNextQuestion } = params;
+  const { success, question, onNextQuestion, questionPoints } = params;
 
   return (
     <div style={{display: "flex", flexDirection: "column"}}>

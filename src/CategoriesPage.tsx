@@ -18,10 +18,10 @@ interface Categories {
 
 export const CategoryPage = () => {
   const search = useLocation().search;
-  const userSlug = new URLSearchParams(search).get("userSlug");
+  const userId = new URLSearchParams(search).get("userId");
   const navigate = useNavigate();
   const { loading, data = null } = useFetch<Categories>(
-    `https://api.newoncequiz.pl/api/quiz-categories?userId=${userSlug}`,
+    `https://api.newoncequiz.pl/api/quiz-categories?userId=${userId}`,
     []
   );
 
@@ -31,7 +31,7 @@ export const CategoryPage = () => {
 
   const onOpenCategory = (category: Category) => {
     console.log(category);
-    navigate(`/game?categoryId=${category.id}&userSlug=${userSlug}`);
+    navigate(`/game?categoryId=${category.id}&userId=${userId}`);
   };
 
   return (

@@ -22,7 +22,7 @@ export const WelcomePage = () => {
 
     const user = await data.json()
 
-    nav(`/categories?userSlug=${user.slug}`)
+    nav(`/categories?userId=${user.id}`)
     
   }
 
