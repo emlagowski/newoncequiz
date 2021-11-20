@@ -12,9 +12,9 @@ export const QuestionSummaryPage = (params: QuestionSummaryPageParams) => {
   const { success, question, onNextQuestion, questionPoints } = params;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div style={{ display: "flex", flexDirection: "column", height: "95vh" }}>
       <img src={`/Vector${success ? '2' : '1'}.png`} style={{ position: "absolute", left: 0, top: 0, zIndex: -1 }} />
-      <div style={{ position: "relative" }}>
+      <div style={{ position: "relative", marginTop: "42px" }}>
         <QuestionImageCover url={question.resultImageUri} />
         <div style={{
           position: "absolute",
@@ -32,34 +32,34 @@ export const QuestionSummaryPage = (params: QuestionSummaryPageParams) => {
             height: "24px",
           }} />
         </div>
-        { success && 
-        
-        <div style={{
-          position: "absolute",
-          backgroundColor: "white",
-          width: "120px",
-          height: "120px",
-          left: -24,
-          top: -24,
-          borderRadius: "100%",
-          boxShadow: '4px 4px 0px #1300E8',
-          display: "flex",
-          justifyContent: "center",
-          fontSize: "44px",
-          color: "rgb(19, 0, 232)",
-          lineHeight: "128px",
-        }}>
-          + {questionPoints}
-        </div>
-        
-        
+        {success &&
+
+          <div style={{
+            position: "absolute",
+            backgroundColor: "white",
+            width: "120px",
+            height: "120px",
+            left: -24,
+            top: -24,
+            borderRadius: "100%",
+            boxShadow: '4px 4px 0px #1300E8',
+            display: "flex",
+            justifyContent: "center",
+            fontSize: "44px",
+            color: "rgb(19, 0, 232)",
+            lineHeight: "128px",
+          }}>
+            + {questionPoints}
+          </div>
+
+
         }
-        
+
       </div>
-      <h2>{success ? 'Taak! Mówimy o ...' : 'Nope! mówimy o ...'}</h2>
+      <h2 style={{ margin: "48px 0" }}>{success ? 'Taak! Mówimy o ...' : 'Nope! mówimy o ...'}</h2>
       <button>{question.answer}</button>
       {success ? (
-        <p className="primary" style={{ flex: 1, marginBottom: "24px" }}>Dopisujemy do Twojego konta ....</p>
+        <p className="primary" style={{ flex: 1, marginBottom: "24px" }}> </p>
       ) : (
         <p className="primary" style={{ flex: 1, marginBottom: "24px" }}>Może kolejnym razem Ci się uda! Powodzenia!</p>
       )}

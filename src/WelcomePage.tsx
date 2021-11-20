@@ -30,7 +30,7 @@ export const WelcomePage = () => {
     <div style={{display: "flex", flexDirection: "column", height: "100%"}}>
       <h1 className={"primary"}>Zagraj z innymi w newonce quiz</h1>
       <p className={"primary"}>
-        Dla członków newonce.club rywalizuj z innymi o nagrody i sprawdźjak bardzo znasz niuanse!
+        Dla członków newonce.club rywalizuj z innymi o nagrody i sprawdź jak bardzo znasz niuanse!
       </p>
       <h2 className="label">Podaj imię</h2>
       <input id="name" placeholder="Twoje imię" ref={username}/>

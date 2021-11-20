@@ -22,7 +22,7 @@ export const CategoryPage = () => {
   const userId = new URLSearchParams(search).get("userId");
   const navigate = useNavigate();
   const { loading, data = null } = useFetch<Categories>(
-    `${API_ADDRESS}/api/quiz-categories?userId=${userId}`,{cache: "no-cache", cachePolicy: CachePolicies.NETWORK_ONLY}, []
+    `${API_ADDRESS}/api/quiz-categories?userId=${userId}`, { cache: "no-cache", cachePolicy: CachePolicies.NETWORK_ONLY }, []
   );
 
   if (loading) {
@@ -46,10 +46,12 @@ export const CategoryPage = () => {
             {category.typeName}
           </button>
           <div className="hstack">
-            <div className="primary">
-              zostało {category.leftTriesCount}/{category.maxTriesCount}
+            <div className="primary" style={{ fontFamily: "HelveticaNowText" }}>
+              próby  {category.leftTriesCount}/{category.maxTriesCount}
             </div>
-            <div className="primary">zagrano {category.playedUsersCount} razy</div>
+            <div className="primary" style={{ fontFamily: "HelveticaNowText" }}>
+              zagrano {category.playedUsersCount} razy
+            </div>
           </div>
         </div>
       ))}

@@ -43,7 +43,7 @@ export const QuestionPage = (params: QuestionPageParams) => {
   }, []);
 
   return (
-    <div className="answers">
+    <div className="answers" style={{ height: "100vh" }}>
       <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
         <div>
           <p style={{
