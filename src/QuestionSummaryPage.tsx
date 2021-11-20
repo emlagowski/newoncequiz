@@ -42,7 +42,6 @@ export const QuestionSummaryPage = (params: QuestionSummaryPageParams) => {
         <p className="primary" style={{flex: 1, marginBottom: "24px"}}>Może kolejnym razem Ci się uda! Powodzenia!</p>
       )}
       <button className="primary" onClick={onNextQuestion} style={{marginBottom: "16px"}}>KOLEJNE PYTANIE!</button>
-      <button onClick={onNextQuestion}>zobacz ranking (todo)</button>
     </div>
   );
 };
