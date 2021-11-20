@@ -6,7 +6,6 @@ export const RankItem = (props: {
     points: number,
     active?: boolean
 }) => {
-
     const act = props.active ? "active" : ""
 
     return (

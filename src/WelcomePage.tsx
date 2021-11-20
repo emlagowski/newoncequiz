@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router";
+import { API_ADDRESS } from "./constants";
 
 
 export const WelcomePage = () => {
@@ -11,20 +12,19 @@ export const WelcomePage = () => {
     const name = username.current!
     const uname = name['value']
 
-    const data = await fetch("https://api.newoncequiz.pl/api/users",{
+    const data = await fetch(`${API_ADDRESS}/api/users`, {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({name: uname})
-    })
+      body: JSON.stringify({ name: uname }),
+    });
 
     const user = await data.json()
 
     nav(`/categories?userId=${user.id}`);
     
   }
-
 
   return (
     <div style={{display: "flex", flexDirection: "column", height: "100%"}}>

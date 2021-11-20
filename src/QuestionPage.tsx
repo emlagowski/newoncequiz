@@ -5,12 +5,13 @@ import { Question } from "./GamePage";
 
 interface QuestionPageParams {
   question: Question;
+  questionsCount: number;
   onSuccess: (points: number) => void;
   onFailure: () => void;
 }
 
 export const QuestionPage = (params: QuestionPageParams) => {
-  const { question, onSuccess, onFailure } = params;
+  const { question, onSuccess, onFailure, questionsCount } = params;
   const [questionVariant, setQuestionVaraint] = useState(3);
   const [timer, setTimer] = useState(10);
   useEffect(() => {
@@ -44,7 +45,7 @@ export const QuestionPage = (params: QuestionPageParams) => {
   return (
     <div className="answers">
       <div style={{display: "flex", flexDirection: "row-reverse"}}>
-        <p>pytanie {question.number}</p>
+        <p>pytanie {question.number}/{questionsCount}</p>
       </div>
       {
         {

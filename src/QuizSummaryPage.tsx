@@ -1,8 +1,9 @@
 import { useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import useFetch from "use-http";
+import useFetch, { CachePolicies } from "use-http";
 import { Loading } from "./components/Loading";
 import { RankItem } from "./components/rankItem/RankItem";
+import { API_ADDRESS } from "./constants";
 
 
 interface Rankings {
@@ -13,7 +14,8 @@ interface Ranking {
   place: number;
   name: string;
   slug: string;
-  score: number
+  score: number;
+  thisUser: boolean;
 }
 
 export const QuizSummaryPage = () => {
@@ -21,7 +23,10 @@ export const QuizSummaryPage = () => {
   const searchParams = new URLSearchParams(search);
   const gameId = searchParams.get("gameId");
   const userId = searchParams.get("userId");
-  const { loading, data = null } = useFetch<Rankings>(`https://api.newoncequiz.pl/api/rankings/game/${gameId}`, []);
+  const { loading, data = null } = useFetch<Rankings>(
+    `${API_ADDRESS}/api/rankings/game/${gameId}`,
+    { cache: "no-cache", cachePolicy: CachePolicies.NETWORK_ONLY }, []
+  );
   const link = window.location.href + `?gameId=${gameId}&userId=${userId}`;
   const navigate = useNavigate();
   
@@ -57,8 +62,8 @@ export const QuizSummaryPage = () => {
         return (
           <div key={ranking.slug} style={{ width: `${100 - index * 10}%` }}>
             <RankItem
-              active={ranking.name === userId}
-              name={ranking.name}
+              active={ranking.thisUser}
+              name={ranking.slug}
               place={ranking.place}
               points={ranking.score}
             />
