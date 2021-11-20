@@ -11,7 +11,6 @@ export const WelcomePage = () => {
   const login = async () => {
     const name = username.current!
     const uname = name['value']
-    console.log(uname)
 
     const data = await fetch(`${API_ADDRESS}/api/users`, {
       method: "POST",
