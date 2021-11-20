@@ -73,6 +73,14 @@ export const QuestionPage = (params: QuestionPageParams) => {
         }[questionVariant]
       }
 
+      <div className="row"><p style={{ fontSize: "24px", margin: "2px" }}>{timer.toFixed(2).replace('.',':')}</p></div>
+
+      {questionVariant > 1 && (
+        <button className="primary" onClick={onEasier}>
+          YYY... PODPOWIEDŹ!
+        </button>
+      )}
+
       {question.possibleAnswers.map((possibleAnswer) => {
         return (
           <button key={possibleAnswer} onClick={() => onAnswerSelected(possibleAnswer)}>
@@ -80,12 +88,6 @@ export const QuestionPage = (params: QuestionPageParams) => {
           </button>
         );
       })}
-      <div className="row"><p>{timer.toFixed(2).replace('.',':')}</p></div>
-      {questionVariant > 1 && (
-        <button className="primary" onClick={onEasier}>
-          YYY... PODPOWIEDŹ!
-        </button>
-      )}
     </div>
   );
 };
