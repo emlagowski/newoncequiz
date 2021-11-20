@@ -15,20 +15,20 @@ export const QuestionPage = (params: QuestionPageParams) => {
   const [questionVariant, setQuestionVaraint] = useState(3);
   const [timer, setTimer] = useState(10);
   useEffect(() => {
-    var timeoutVal = 20
+    var timeoutVal = 20;
     const timeout = setInterval(() => {
-      timeoutVal -= 0.01
-      setTimer(timeoutVal)
+      timeoutVal -= 0.01;
+      setTimer(timeoutVal);
       if (timeoutVal < 0) {
-        clearTimeout(timeout)
-        onFailure()
+        clearTimeout(timeout);
+        onFailure();
       }
-    }, 10)
+    }, 10);
 
     return () => {
-      clearTimeout(timeout)
-    }
-  }, [])
+      clearTimeout(timeout);
+    };
+  }, [onFailure]);
 
   const onEasier = useCallback(() => {
     setQuestionVaraint(questionVariant - 1);
@@ -40,7 +40,7 @@ export const QuestionPage = (params: QuestionPageParams) => {
     } else {
       onFailure();
     }
-  }, []);
+  }, [onFailure, onSuccess, question.answer, questionVariant]);
 
   return (
     <div className="answers">

@@ -32,7 +32,7 @@ export const QuizSummaryPage = () => {
   
   const onGoToCategories = useCallback(() => {
     navigate(`/categories?userId=${userId}`);
-  }, [])
+  }, [navigate, userId])
   
   const onShare = useCallback(() => {
     if (navigator.share) {
@@ -49,7 +49,7 @@ export const QuizSummaryPage = () => {
           console.error("Something went wrong sharing the blog", error);
         });
     }
-  }, []);
+  }, [link]);
 
   if (loading) {
     return <Loading />;

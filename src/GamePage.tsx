@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import useFetch, { CachePolicies } from "use-http";
 import { Loading } from "./components/Loading";
 import { API_ADDRESS } from "./constants";
@@ -45,7 +45,7 @@ export const GamePage = () => {
     []
   );
 
-  const { post: postGameResults, response } = useFetch(
+  const { post: postGameResults } = useFetch(
     `${API_ADDRESS}/api/games/results`,
     {
       method: "POST",
@@ -73,11 +73,11 @@ export const GamePage = () => {
       postGameResults({
         gameId: data?.game.id,
         score: gameResult.toString(),
-      }).then((response) => {
+      }).then(() => {
         navigate(`/game/result?gameId=${data?.game.id}&userId=${userId}`);
       });
     }
-  }, [data, questionId, gameResult, userId]);
+  }, [data, questionId, gameResult, userId, setShowQuestionSummary, navigate, postGameResults]);
 
   const onSuccess = useCallback(
     (points: number) => {

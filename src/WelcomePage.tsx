@@ -37,7 +37,7 @@ export const WelcomePage = () => {
       <button onClick={login} className="primary">lecimy</button>
       <div style={{flex: 1}}></div>
       <div style={{height: 100}}>
-        <img src="/logo.png" height="41" width="112"/>
+        <img src="/logo.png" alt="" height="41" width="112"/>
       </div>
     </div>
   );
