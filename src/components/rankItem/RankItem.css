@@ -1,0 +1,40 @@
+.wrapper {
+    padding: 0px 8px;
+    text-transform: uppercase;
+    font-family: HelveticaNowTextBold;
+    position: relative;
+    box-shadow: 4px 4px 0px 0px rgb(19, 0, 232);
+    border: solid 2px black;
+    margin-top: 32px;
+}
+
+.place {
+    position: absolute;
+    top: -16px;
+    left: 4px;
+    color: white;
+    background-color: rgb(19, 0, 232);
+    box-shadow: 2px 2px 0px 0px rgb(0, 0, 0);
+    border: solid 2px black;
+    padding: 8px;
+    line-height: 2px;
+    font-size: 10px;
+}
+
+.flexrow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    line-height: 12px;
+}
+
+.wrapper.active {
+    background-color: rgb(19, 0, 232);
+    color: white;
+    box-shadow: 4px 4px 0px 0px rgb(0, 0, 0);
+}
+
+.place.active {
+    background-color: white;
+    color: rgb(19, 0, 232);
+}

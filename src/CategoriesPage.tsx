@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./categories.css";
 import useFetch from "use-http";
 import { Loading } from "./components/Loading";
