@@ -27,29 +27,30 @@ export const QuestionPage = (params: QuestionPageParams) => {
 
   return (
     <div className="answers">
-      <p>pytanie {question.number}</p>
-
+      <div style={{display: "flex", flexDirection: "row-reverse"}}>
+        <p>pytanie {question.number}</p>
+      </div>
       {
         {
           3: (
             <div>
               <QuestionTextCover text={question.article} />
               <div className="row primary"><p>pytanie za {questionVariant} punkty</p></div>
-              <h1>O kim mówi artykuł z newonce?</h1>
+              <h2>O kim mówi artykuł z newonce?</h2>
             </div>
           ),
           2: (
             <div>
               <QuestionImageCover url={question.coverUri}/>
               <p>pytanie za {questionVariant} punkty</p>
-              <h1>Kogo to album?</h1>
+              <h2>Kogo to album?</h2>
             </div>
           ),
           1: (
             <div>
               <QuestionTextCover text={question.randomSong} />
               <p>pytanie za {questionVariant} punkty</p>
-              <h1>To piosenka...?</h1>
+              <h2>To piosenka...?</h2>
             </div>
           ),
         }[questionVariant]
