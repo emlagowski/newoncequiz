@@ -15,7 +15,7 @@ export const QuestionPage = (params: QuestionPageParams) => {
   const [questionVariant, setQuestionVaraint] = useState(3);
   const [timer, setTimer] = useState(10);
   useEffect(() => {
-    var timeoutVal = 10
+    var timeoutVal = 20
     const timeout = setInterval(() => {
       timeoutVal -= 0.01
       setTimer(timeoutVal)
