@@ -74,7 +74,7 @@ export const QuizSummaryPage = () => {
         UDOSTĘPNIJ!
       </button>
       <button style={{ marginTop: "24px" }} onClick={onGoToCategories}>
-        WRÓĆ DO KATEGORII
+        ZAGRAJ JESZCZE RAZ
       </button>
     </div>
   );
