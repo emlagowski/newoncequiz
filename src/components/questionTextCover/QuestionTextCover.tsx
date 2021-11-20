@@ -6,7 +6,7 @@ export const QuestionTextCover = (props: {
     return (
         <div className="row">
         <div className={"question-cover-wrapper"}>
-            <p>"{props.text}"</p>
+            <p style={{fontFamily: "HelveticaNowTextBold"}}>"{props.text}"</p>
         </div>
         </div>
     )

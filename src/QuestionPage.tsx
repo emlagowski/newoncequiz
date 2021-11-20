@@ -19,11 +19,11 @@ export const QuestionPage = (params: QuestionPageParams) => {
     const timeout = setInterval(() => {
       timeoutVal -= 0.01
       setTimer(timeoutVal)
-      if(timeoutVal<0){
+      if (timeoutVal < 0) {
         clearTimeout(timeout)
         onFailure()
       }
-    },10)
+    }, 10)
 
     return () => {
       clearTimeout(timeout)
@@ -44,8 +44,20 @@ export const QuestionPage = (params: QuestionPageParams) => {
 
   return (
     <div className="answers">
-      <div style={{display: "flex", flexDirection: "row-reverse"}}>
-        <p>pytanie {question.number}/{questionsCount}</p>
+      <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+        <div>
+          <p style={{
+            fontSize: "24px",
+            color: timer < 7  ?'red' : 'black'
+          }}>
+            {timer.toFixed(2).replace('.', ':')} s.
+          </p>
+        </div>
+        <div>
+          <p>pytanie {question.number}/{questionsCount}</p>
+        </div>
+
+
       </div>
       {
         {
@@ -53,30 +65,28 @@ export const QuestionPage = (params: QuestionPageParams) => {
             <div>
               <QuestionTextCover text={question.article} />
               <div className="row primary"><p>pytanie za {questionVariant} punkty</p></div>
-              <h2>O kim mówi artykuł z newonce?</h2>
+              <h2 style={{margin: "2px"}} >O kim mówi artykuł z newonce?</h2>
             </div>
           ),
           2: (
             <div>
-              <QuestionImageCover url={question.coverUri} blurred={true}/>
+              <QuestionImageCover url={question.coverUri} blurred={true} />
               <div className="row primary"><p>pytanie za {questionVariant} punkty</p></div>
-              <h2>Kogo to album?</h2>
+              <h2 style={{margin: "2px"}} >Kogo to album?</h2>
             </div>
           ),
           1: (
             <div>
               <QuestionTextCover text={question.randomSong} />
               <div className="row primary"><p>pytanie za {questionVariant} punkty</p></div>
-              <h2>To piosenka...?</h2>
+              <h2 style={{margin: "2px"}} >To piosenka...?</h2>
             </div>
           ),
         }[questionVariant]
       }
 
-      <div className="row"><p style={{ fontSize: "24px", margin: "2px" }}>{timer.toFixed(2).replace('.',':')}</p></div>
-
       {questionVariant > 1 && (
-        <button className="primary" onClick={onEasier}>
+        <button className="primary" onClick={onEasier} style={{marginBottom: "16px"}}>
           YYY... PODPOWIEDŹ!
         </button>
       )}
